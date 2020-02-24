@@ -610,6 +610,30 @@ class Element
         return $this->classAttribute;
     }
 
+
+  /**
+   * @return Boolean
+   */
+    public function hasClass($className) {
+      return $this->classes()->contains($className);
+    }
+
+
+  /**
+   * @return \DiDom\ClassAttribute
+   */
+    public function addClass($className) {
+      return $this->classes()->add($className);
+    }
+
+
+  /**
+   * @return \DiDom\ClassAttribute
+   */
+    public function removeClass($className) {
+      return $this->classes()->remove($className);
+    }
+
     /**
      * @return \DiDom\StyleAttribute
      *
@@ -1422,6 +1446,9 @@ class Element
     {
         if ($name === 'tag') {
             return $this->node->tagName;
+        }
+        if ($name === 'classList') {
+            return $this->classes();
         }
 
         return $this->getAttribute($name);
